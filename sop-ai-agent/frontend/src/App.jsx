@@ -53,11 +53,13 @@ function App() {
             </header>
             <main className="main-layout">
                 <div className="chat-area">
+                    <div className="panel-header">Terminal Interface</div>
                     <ChatWindow messages={messages} />
                     {loading && <div className="loading-indicator">Typing...</div>}
                     <InputBar onSend={handleSend} disabled={loading} />
                 </div>
                 <div className="chart-area">
+                    <div className="panel-header">Visual Output Engine</div>
                     {activeDisplay ? (
                         activeDisplay.type === 'chart' ? (
                             <ChartPanel spec={activeDisplay.content} />
