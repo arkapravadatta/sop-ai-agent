@@ -1,0 +1,16 @@
+customer_id,customer_name,region,segment
+C001,Manufacturing Co 1,East,Enterprise
+C002,Manufacturing Co 2,South,SMB
+C003,Manufacturing Co 3,South,Mid-Market
+C004,Manufacturing Co 4,West,Enterprise
+C005,Manufacturing Co 5,North,Enterprise
+C006,Manufacturing Co 6,East,Enterprise
+C007,Manufacturing Co 7,East,Enterprise
+C008,Manufacturing Co 8,South,Mid-Market
+C009,Manufacturing Co 9,South,SMB
+C010,Manufacturing Co 10,East,SMB
+C011,Manufacturing Co 11,East,SMB
+C012,Manufacturing Co 12,West,Mid-Market
+C013,Manufacturing Co 13,East,Enterprise
+C014,Manufacturing Co 14,North,Enterprise
+C015,Manufacturing Co 15,South,Mid-Market

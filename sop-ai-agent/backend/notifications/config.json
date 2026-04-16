@@ -1,0 +1,9 @@
+{
+  "region_contacts": {
+    "North": {"person": "Alice Johnson", "role": "Regional Sales Manager — North"},
+    "South": {"person": "Bob Smith", "role": "Regional Sales Manager — South"},
+    "East":  {"person": "Carol Lee", "role": "Regional Sales Manager — East"},
+    "West":  {"person": "David Kim", "role": "Regional Sales Manager — West"}
+  },
+  "default_contact": {"person": "Eve Director", "role": "National Sales Head"}
+}

@@ -1,0 +1,21 @@
+product_id,product_name,category,sub_category
+P001,Machine Part 1,Chassis,Sub-1
+P002,Machine Part 2,Hydraulics,Sub-2
+P003,Machine Part 3,Hydraulics,Sub-3
+P004,Machine Part 4,Chassis,Sub-4
+P005,Machine Part 5,Engine,Sub-0
+P006,Machine Part 6,Chassis,Sub-1
+P007,Machine Part 7,Hydraulics,Sub-2
+P008,Machine Part 8,Chassis,Sub-3
+P009,Machine Part 9,Electronics,Sub-4
+P010,Machine Part 10,Chassis,Sub-0
+P011,Machine Part 11,Electronics,Sub-1
+P012,Machine Part 12,Hydraulics,Sub-2
+P013,Machine Part 13,Electronics,Sub-3
+P014,Machine Part 14,Electronics,Sub-4
+P015,Machine Part 15,Hydraulics,Sub-0
+P016,Machine Part 16,Chassis,Sub-1
+P017,Machine Part 17,Electronics,Sub-2
+P018,Machine Part 18,Engine,Sub-3
+P019,Machine Part 19,Engine,Sub-4
+P020,Machine Part 20,Engine,Sub-0

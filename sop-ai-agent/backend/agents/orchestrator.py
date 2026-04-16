@@ -1,0 +1,83 @@
+from typing import TypedDict, Optional
+from langgraph.graph import StateGraph, END
+from agents.intent_classifier import classify_intent
+from agents.data_query_agent import run_data_query
+from agents.visualization_agent import run_visualization
+from agents.notification_agent import check_notification
+
+class AgentState(TypedDict):
+    user_message: str
+    intent: str
+    requires_notification: bool
+    region_mentioned: Optional[str]
+    query_result: str
+    chart_json: Optional[dict]
+    notification: Optional[dict]
+    error: Optional[str]
+
+def intent_classifier_node(state: AgentState):
+    classification = classify_intent(state["user_message"])
+    return {
+        "intent": classification.get("intent", "general"),
+        "requires_notification": classification.get("requires_notification", False),
+        "region_mentioned": classification.get("region_mentioned")
+    }
+
+def data_query_node(state: AgentState):
+    answer = run_data_query(state["user_message"])
+    return {"query_result": answer}
+
+def visualization_node(state: AgentState):
+    chart = run_visualization(state["user_message"])
+    msg = "Here is the visualization requested." if chart else "Failed to build visualization."
+    return {"chart_json": chart, "query_result": msg}
+
+def notification_check_node(state: AgentState):
+    if state.get("requires_notification") and state.get("region_mentioned"):
+        notif = check_notification(state["region_mentioned"])
+        if notif:
+            return {"notification": notif}
+    return {}
+
+def general_reply_node(state: AgentState):
+    return {"query_result": "Hello! I am your S&OP AI agent. I can help with data querying and visualizations regarding sales and operations."}
+
+def build_graph():
+    graph = StateGraph(AgentState)
+    
+    graph.add_node("intent_classifier", intent_classifier_node)
+    graph.add_node("data_query", data_query_node)
+    graph.add_node("visualization", visualization_node)
+    graph.add_node("notification_check", notification_check_node)
+    graph.add_node("general_reply", general_reply_node)
+    
+    graph.set_entry_point("intent_classifier")
+    
+    def route_intent(state: AgentState) -> str:
+        intent = state.get("intent")
+        if intent == "data_query":
+            return "data_query"
+        elif intent == "visualization":
+            return "visualization"
+        else:
+            return "general_reply"
+            
+    graph.add_conditional_edges("intent_classifier", route_intent, {
+        "data_query": "data_query",
+        "visualization": "visualization",
+        "general_reply": "general_reply"
+    })
+    
+    graph.add_edge("data_query", "notification_check")
+    graph.add_edge("visualization", "notification_check")
+    graph.add_edge("general_reply", END)
+    graph.add_edge("notification_check", END)
+    
+    return graph.compile()
+
+# Singleton graph build
+agent_graph = build_graph()
+
+async def run_agent(user_message: str) -> dict:
+    state = await agent_graph.ainvoke({"user_message": user_message})
+    return state
