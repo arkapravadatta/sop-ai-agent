@@ -10,6 +10,7 @@ async def chat(req: ChatRequest):
     return ChatResponse(
         answer=state.get("query_result") or "I'm not sure how to help with that.",
         chart=state.get("chart_json"),
+        report=state.get("report"),
         notification=state.get("notification"),
         intent=state.get("intent", "general")
     )

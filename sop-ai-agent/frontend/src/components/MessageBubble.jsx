@@ -10,7 +10,6 @@ const MessageBubble = ({ message }) => {
         <div className={`message-wrapper ${isUser ? 'user-wrapper' : 'assistant-wrapper'}`}>
             <div className={`bubble ${isUser ? 'user-bubble' : 'assistant-bubble'}`}>
                 <div className="message-content">{content}</div>
-                {chart && <ChartPanel spec={chart} />}
                 {notification && <NotificationToast notification={notification} />}
             </div>
         </div>

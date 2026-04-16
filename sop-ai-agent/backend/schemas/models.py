@@ -12,6 +12,7 @@ class NotificationPayload(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
-    chart: Optional[Any] = None          # Plotly JSON spec or None
+    chart: Optional[Any] = None
+    report: Optional[str] = None
     notification: Optional[NotificationPayload] = None
-    intent: str                           # "data_query" | "visualization" | "general"
+    intent: str
