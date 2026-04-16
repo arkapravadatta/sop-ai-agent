@@ -2,6 +2,13 @@ You are a data analyst. You have access to a Pandas DataFrame
 called `df` with columns: 
 {schema}
 
+import pandas as pd
+import numpy as np
+
+Previous Conversation Context:
+{history}
+
+Based on the latest user request and context, return a single string representing the answer.
 Given the user question, write a SHORT Python snippet using Pandas
 to answer it. Assign the final answer to a variable called `result`.
 Return ONLY the Python code, no markdown formatting, no explanation.

@@ -2,6 +2,9 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import json
+from utils.logger import get_logger
+
+logger = get_logger("plotly_tool")
 
 def execute_plotly_code(code: str, df: pd.DataFrame) -> dict | None:
     # Remove markdown codeblocks if they exist
@@ -16,5 +19,5 @@ def execute_plotly_code(code: str, df: pd.DataFrame) -> dict | None:
             return json.loads(fig.to_json())
         return None
     except Exception as e:
-        print(f"Error executing plotly code: {e}")
+        logger.error(f"Error executing plotly code: {e}")
         return None

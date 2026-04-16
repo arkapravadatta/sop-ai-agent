@@ -6,7 +6,7 @@ router = APIRouter()
 
 @router.post("/api/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
-    state = await run_agent(req.message)
+    state = await run_agent(req.message, req.history)
     return ChatResponse(
         answer=state.get("query_result") or "I'm not sure how to help with that.",
         chart=state.get("chart_json"),

@@ -3,6 +3,7 @@ from typing import Optional, Any
 
 class ChatRequest(BaseModel):
     message: str
+    history: list[dict] = []
     session_id: Optional[str] = "default"
 
 class NotificationPayload(BaseModel):

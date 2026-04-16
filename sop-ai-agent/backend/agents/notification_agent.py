@@ -1,5 +1,8 @@
 import os
 import json
+from utils.logger import get_logger
+
+logger = get_logger("notification_agent")
 
 def check_notification(region_mentioned: str | None) -> dict | None:
     if not region_mentioned:
@@ -20,5 +23,5 @@ def check_notification(region_mentioned: str | None) -> dict | None:
                 "message": f"Query addressed metrics relating to {region_mentioned}."
             }
     except Exception as e:
-        print(f"Failed handling notification config: {e}")
+        logger.error(f"Failed handling notification config: {e}")
     return None

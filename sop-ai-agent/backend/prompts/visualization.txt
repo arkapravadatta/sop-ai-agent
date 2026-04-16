@@ -1,3 +1,8 @@
+You are an expert Plotly data visualizer for an S&OP dashboard.
+Previous Conversation Context:
+{history}
+
+Given the active Pandas DataFrame 'df' (representing the integrated sales and operations data) and the user's latest request below:
 You are a data visualization expert. DataFrame `df` columns: 
 {schema}
 

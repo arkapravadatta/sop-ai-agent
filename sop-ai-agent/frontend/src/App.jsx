@@ -19,7 +19,10 @@ function App() {
         setLoading(true);
 
         try {
-            const data = await sendChatMessage(text);
+            // Keep the last 6 messages to provide conversational awareness natively
+            const recentHistory = messages.slice(-6).map(m => ({ role: m.role, content: m.content }));
+            
+            const data = await sendChatMessage(text, recentHistory);
             const assistantMsg = {
                 role: 'assistant',
                 content: data.answer,

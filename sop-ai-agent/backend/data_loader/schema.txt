@@ -1,0 +1,4 @@
+# WRITE YOUR FORMAL DETAILED SCHEMA DEFINITION HERE
+# This file serves as the official schema reference for the S&OP AI.
+# If this file contains content other than these comments, the backend data loader
+# will prioritize this text as explicit data modeling instructions for the LLM natively!
